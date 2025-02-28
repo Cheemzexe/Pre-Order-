@@ -1,0 +1,34 @@
+# Pre Order Window
+PreOrder= Window(app,title='PreOrder', width=700, height=500,bg = "#CAC8B6") # names the window which has everything in
+PreOrder.hide() # hides the window until called to open
+PreBox = Box(PreOrder, width = 600 , height = 60 , border = True ,layout="grid")
+
+ProdText = Text(PreBox, text= "Product:",font="Britannic Bold", grid = [0,1])#this tells the user what to enter
+Window_PreOrder_ProductBox = Combo(PreBox, width=70, height=0, options=[""],grid = [1,1])
+
+QuanText = Text(PreBox, text= "Quantity:",font="Britannic Bold", grid = [0,2])#this tells the user what to enter
+Window_PreOrder_Quantity = Combo(PreBox, width=5, height=0, options=["1","2","3","4","5","6","7","8","9","10"],grid = [1,2])
+
+Add_Order = PushButton(PreOrder, text="Add To Order", height=5, width=10, command=Order_Add)
+Add_Order.bg = "#93ccad"
+
+Order_Detail_Box = ListBox(PreOrder,items =[] , width=600, height=200)
+#Order_Detail_Box.text_size = 10
+Order_Detail_Box.bg = "#93ccad"
+
+btn_back= PushButton(PreOrder, text="Back", command=Back_Menu, width = 15)  #this allows the user to go back to the main menu
+btn_back.font = "Bodoni MT Black"
+btn_back.bg = "#93ccad"
+
+####################################################################
+
+def preorder_open():
+	loadProducts(user_LoggedIn)
+	PreOrder.show()
+
+def Order_Add():
+	Order_Detail_Box.append(" ")
+	lineformatted = "Product: " + Window_PreOrder_ProductBox.value
+	Order_Detail_Box.append(lineformatted)
+	lineformatted1 = "Quantity: " + Window_PreOrder_Quantity.value
+	Order_Detail_Box.append(lineformatted1)
