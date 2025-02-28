@@ -13,8 +13,10 @@ Add_Order = PushButton(PreOrder, text="Add To Order", height=5, width=10, comman
 Add_Order.bg = "#93ccad"
 
 Order_Detail_Box = ListBox(PreOrder,items =[] , width=600, height=200)
-#Order_Detail_Box.text_size = 10
 Order_Detail_Box.bg = "#93ccad"
+
+Complete_Order = PushButton(PreOrder, text="Complete Order", height=5, width=10, command=Complete_Order)
+Complete_Order.bg = "#93ccad"
 
 btn_back= PushButton(PreOrder, text="Back", command=Back_Menu, width = 15)  #this allows the user to go back to the main menu
 btn_back.font = "Bodoni MT Black"
@@ -43,6 +45,17 @@ def Order_Add():
 
 	lineformatted2 = "Total: " + str(total_price)
 	Order_Detail_Box.append(lineformatted2)
+
+	lineformatted3 = "Total so far: " + str(running_total)
+	Order_Detail_Box.append(lineformatted3)
+	
+
+def Complete_Order():
+	All_Items = Order_Detail_Box.items # make a list of ALL listbox
+	print(All_Items)
+	list_lenth= len(All_Items)
+	total_order = All_Items[list_lenth -1 ]
+	print(total_order)
 
 	lineformatted3 = "Total so far: " + str(running_total)
 	Order_Detail_Box.append(lineformatted3)
