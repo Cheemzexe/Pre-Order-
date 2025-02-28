@@ -27,8 +27,22 @@ def preorder_open():
 	PreOrder.show()
 
 def Order_Add():
+	global running_total
 	Order_Detail_Box.append(" ")
 	lineformatted = "Product: " + Window_PreOrder_ProductBox.value
 	Order_Detail_Box.append(lineformatted)
 	lineformatted1 = "Quantity: " + Window_PreOrder_Quantity.value
 	Order_Detail_Box.append(lineformatted1)
+	#
+	orderlist = Window_PreOrder_ProductBox.value.split() # create a list
+	print(orderlist)
+	price = orderlist[1]
+
+	total_price = int(Window_PreOrder_Quantity.value) * float(price)
+	running_total = running_total + total_price
+
+	lineformatted2 = "Total: " + str(total_price)
+	Order_Detail_Box.append(lineformatted2)
+
+	lineformatted3 = "Total so far: " + str(running_total)
+	Order_Detail_Box.append(lineformatted3)
